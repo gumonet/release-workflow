@@ -1,0 +1,24 @@
+.gm-icon{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-size: cover;
+  vertical-align: sub;
+}
+.navbar-toggler-icon{
+  display: block;
+  background-size: 98%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: 0 auto;
+ // background-image: url('../img/svg/menu.svg');
+}
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
