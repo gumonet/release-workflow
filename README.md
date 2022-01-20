@@ -1,1 +1,1 @@
-# landing-domotica
+# Process to configure git release
