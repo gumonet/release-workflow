@@ -77,4 +77,5 @@ gulp.task('purgecss', () => {
 })
 
 gulp.task('run', gulp.parallel('sass', 'js', 'images','watch', 'fonts'));
+gulp.task('build', gulp.parallel('sass', 'js', 'images', 'fonts'));
 gulp.task('run-sass', gulp.parallel( 'sass-watch'));

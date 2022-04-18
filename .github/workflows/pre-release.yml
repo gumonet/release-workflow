@@ -17,10 +17,13 @@ jobs:
       # ...
       - name: Checkout source code
         uses: actions/checkout@v1
-      - name: "Build & test"
+      - name: "Build js"
         run: |
-          echo "done!"
-          zip -r deployment.zip assets gracias.html index.html send_mail.php
+          echo "Building gulp assets!"
+          gulp build
+      - name: "Create zip file"
+        run: |
+            zip -r deployment.zip assets gracias.html index.html send_mail.php
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
