@@ -28,7 +28,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('js', function() {
-	gulp.src([
+	return gulp.src([
 		//'./node_modules/bootstrap/dist/js/bootstrap.bundle.js',
 		'node_modules/vanilla-lazyload/dist/lazyload.js',
 		'./build/js/main.js'
@@ -41,7 +41,7 @@ gulp.task('js', function() {
 
 //Fonts
 gulp.task('fonts', function() {
-	gulp.src([
+	return gulp.src([
 		//'node_modules/@fortawesome/fontawesome-free/webfonts/*',
 		'build/webfonts/*'
 	])
@@ -50,7 +50,7 @@ gulp.task('fonts', function() {
 
 // Images
 gulp.task('images', function() {
-	gulp.src([
+	return gulp.src([
 		'./build/img/**',
 	])
 		.pipe(gulp.dest('assets/img/'));
