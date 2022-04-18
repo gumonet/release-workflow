@@ -17,6 +17,10 @@ jobs:
       # ...
       - name: Checkout source code
         uses: actions/checkout@v1
+      - name: "Install dependences"
+        run: |
+          echo "Install npm dependences"
+          npm install
       - name: "Build js"
         run: |
           echo "Building gulp assets!"
