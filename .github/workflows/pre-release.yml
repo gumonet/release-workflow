@@ -1,4 +1,4 @@
-# Name of the workflow
+ Name of the workflow
 name: Pre-Release
 
 # Run on every push to main
@@ -33,11 +33,12 @@ jobs:
       - name: "Create zip file"
         run: |
           zip -r "${{ env.FILE_NAME }}" assets gracias.html index.html send_email.php
-      - uses: "marvinpinto/action-automatic-releases@latest"
-         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: true
-          title: "Development Build"
-          files: |
-            ${{ env.FILE_NAME }}.zip
+      - name: "Deploy" 
+        uses: "marvinpinto/action-automatic-releases@latest"
+          with:
+            repo_token: "${{ secrets.GITHUB_TOKEN }}"
+            automatic_release_tag: "latest"
+            prerelease: true
+            title: "Development Build"
+            files: |
+              ${{ env.FILE_NAME }}.zip
