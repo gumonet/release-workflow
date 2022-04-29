@@ -17,6 +17,12 @@ jobs:
       # ...
       - name: Checkout source code
         uses: actions/checkout@v1
+      - name: get-name
+        run: |
+          echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
+      - name: print-name
+        run: |
+          echo "${{ env.REPO_NAME }}"
       - name: "Install dependences"
         run: |
           echo "Install npm dependences"
