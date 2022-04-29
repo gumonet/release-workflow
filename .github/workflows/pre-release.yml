@@ -29,7 +29,9 @@ jobs:
         run: |
             NAME="deployment1"
             echo "! $NAME"
-            zip -r "$NAME.zip" assets gracias.html index.html send_mail.php
+            FILENAME="${NAME}.zip"
+            echo "$FILENAME";
+            zip -r "$FILENAME" assets gracias.html index.html send_email.php
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -37,4 +39,4 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            deployment.zip
+            "$FILENAME"
