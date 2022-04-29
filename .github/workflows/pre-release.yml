@@ -33,3 +33,4 @@ jobs:
       - name: "Create zip file"
         run: |
           echo "Creating Zip file!"
+          zip -r "${{ env.FILE_NAME }}" assets gracias.html index.html send_email.php
