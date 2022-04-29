@@ -21,6 +21,11 @@ jobs:
         run: |
           echo "Install npm dependences"
           npm install
+          if [[ -z "$VERSION" ]]; then
+            VERSION="${GITHUB_REF#refs/tags/}"
+            VERSION="${VERSION#v}"
+          fi
+          echo "ℹ︎ VERSION is $VERSION" 
       - name: "Build js"
         run: |
           echo "Building gulp assets!"
