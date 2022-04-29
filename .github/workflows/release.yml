@@ -17,12 +17,16 @@ jobs:
       # ...
       - name: Checkout source code
         uses: actions/checkout@v1
-      - name: get-name
+      - name: "Set filename"
         run: |
-          echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
-      - name: print-name
-        run: |
-          echo "${{ env.REPO_NAME }}"
+          if [[ -z "$VERSION" ]]; then
+            VERSION="${GITHUB_REF#refs/tags/}"
+            VERSION="${VERSION#v}"
+          fi
+          echo "ℹ︎ Version: $VERSION"
+          REPOSITORY_NAME=${{ github.event.repository.name }}
+          FILE_NAME="${REPOSITORY_NAME}-${VERSION}.zip"
+          echo "FILE_NAME=$FILE_NAME" >> $GITHUB_ENV
       - name: "Install dependences"
         run: |
           echo "Install npm dependences"
@@ -33,13 +37,8 @@ jobs:
           gulp build
       - name: "Create zip file"
         run: |
-            if [[ -z "$VERSION" ]]; then
-              VERSION="${GITHUB_REF#refs/tags/}"
-              VERSION="${VERSION#v}"
-            fi
-            FILENAME="${NAME}.zip"
-            echo "ℹ︎ VERSION is $VERSION" 
-            zip -r deployment.zip assets gracias.html index.html send_mail.php
+          echo "Creating Zip file!"
+          zip -r "${{ env.FILE_NAME }}" assets gracias.html index.html send_email.php
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -47,4 +46,4 @@ jobs:
           prerelease: false
           #title: "Development Build" Uncomment to put your custom title
           files: |
-            deployment.zip
+            ${{ env.FILE_NAME }}
