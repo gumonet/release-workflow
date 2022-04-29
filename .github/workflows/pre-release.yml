@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v1
       - name: get-name
         run: |
-        echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
+          echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
       - name: "Install dependences"
         run: |
           echo "Install npm dependences"
@@ -30,10 +30,10 @@ jobs:
           gulp build
       - name: "Create zip file"
         run: |
-            NAME="deployment1"
-            REPOSITORY=${{ github.event.repository.name }}
-            echo "! $REPOSITORY"
-            echo " !! ${{ env.REPO_NAME }} "
+          NAME="deployment1"
+          REPOSITORY=${{ github.event.repository.name }}
+          echo "! $REPOSITORY"
+          echo " !! ${{ env.REPO_NAME }} "
         #     FILENAME="${REPOSITORY}.zip"
        #      echo "$FILENAME";
       #       zip -r "$FILENAME" assets gracias.html index.html send_email.php
