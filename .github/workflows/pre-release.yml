@@ -17,6 +17,9 @@ jobs:
       # ...
       - name: Checkout source code
         uses: actions/checkout@v1
+      - name: get-name
+        run: |
+        echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
       - name: "Install dependences"
         run: |
           echo "Install npm dependences"
@@ -30,14 +33,15 @@ jobs:
             NAME="deployment1"
             REPOSITORY=${{ github.event.repository.name }}
             echo "! $REPOSITORY"
-            FILENAME="${REPOSITORY}.zip"
-            echo "$FILENAME";
-            zip -r "$FILENAME" assets gracias.html index.html send_email.php
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: true
-          title: "Development Build"
-          files: |
-            *.zip
+            echo " !! ${{ env.REPO_NAME }} "
+        #     FILENAME="${REPOSITORY}.zip"
+       #      echo "$FILENAME";
+      #       zip -r "$FILENAME" assets gracias.html index.html send_email.php
+     # - uses: "marvinpinto/action-automatic-releases@latest"
+       #  with:
+         #  repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          # automatic_release_tag: "latest"
+          # prerelease: true
+          # title: "Development Build"
+          # files: |
+          #   *.zip
