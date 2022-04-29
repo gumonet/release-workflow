@@ -1,4 +1,4 @@
- Name of the workflow
+# Name of the workflow
 name: Pre-Release
 
 # Run on every push to main
