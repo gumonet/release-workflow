@@ -34,12 +34,11 @@ jobs:
         run: |
           echo "Creating Zip file!"
           zip -r "${{ env.FILE_NAME }}" assets gracias.html index.html send_email.php
-      - name: "Deploy" 
-        uses: "marvinpinto/action-automatic-releases@latest"
-          with:
-            repo_token: "${{ secrets.GITHUB_TOKEN }}"
-            automatic_release_tag: "latest"
-            prerelease: true
-            title: "Development Build"
-            files: |
-              ${{ env.FILE_NAME }}.zip
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            ${{ env.FILE_NAME }}.zip
