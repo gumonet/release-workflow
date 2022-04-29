@@ -21,17 +21,18 @@ jobs:
         run: |
           echo "Install npm dependences"
           npm install
-          if [[ -z "$VERSION" ]]; then
-            VERSION="${GITHUB_REF#refs/tags/}"
-            VERSION="${VERSION#v}"
-          fi
-          echo "ℹ︎ VERSION is $VERSION" 
       - name: "Build js"
         run: |
           echo "Building gulp assets!"
           gulp build
       - name: "Create zip file"
         run: |
+            if [[ -z "$VERSION" ]]; then
+              VERSION="${GITHUB_REF#refs/tags/}"
+              VERSION="${VERSION#v}"
+            fi
+            FILENAME="${NAME}.zip"
+            echo "ℹ︎ VERSION is $VERSION" 
             zip -r deployment.zip assets gracias.html index.html send_mail.php
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:

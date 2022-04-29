@@ -28,8 +28,9 @@ jobs:
       - name: "Create zip file"
         run: |
             NAME="deployment1"
-            echo "! $NAME"
-            FILENAME="${NAME}.zip"
+            REPOSITORY=${{ github.event.repository.name }}
+            echo "! $REPOSITORY"
+            FILENAME="${REPOSITORY}.zip"
             echo "$FILENAME";
             zip -r "$FILENAME" assets gracias.html index.html send_email.php
       - uses: "marvinpinto/action-automatic-releases@latest"
