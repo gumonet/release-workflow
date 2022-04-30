@@ -22,6 +22,7 @@ jobs:
           REPOSITORY_NAME=${{ github.event.repository.name }}
           FILE_NAME="${REPOSITORY_NAME}.zip"
           echo "FILE_NAME=$FILE_NAME" >> $GITHUB_ENV
+          echo "DIRECTORY_NAME=$REPOSITORY_NAME" >> $GITHUB_ENV
       - name: "Install dependences"
         run: |
           echo "Install npm dependences"
