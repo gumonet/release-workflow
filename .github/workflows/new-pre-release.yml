@@ -11,9 +11,8 @@ on:
 jobs:
   image-name:
     runs-on: ubuntu-latest
-    outputs:
-      IMAGE_TAG: ${{ github.ref_name }}-${{ steps.short-sha.outputs.sha }}
     steps:
       - name: Parse short sha
-        uses: benjlevesque/short-sha@v1.2
         id: short-sha
+        run: |
+          echo "Hello world"
