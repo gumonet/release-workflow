@@ -10,11 +10,8 @@ on:
 # Automatically create a GitHub Release, with release details specified (the relevant commits)
 jobs:
   get-props:
-    name: "Get props"
-
-  pre-release:
-    name: "Pre Release"
-      - name: "Set filename"
+    steps:
+      - name: "Get props"¡
         uses: actions/checkout@v1
         run: |
           REPOSITORY_NAME=${{ github.event.repository.name }}
@@ -22,6 +19,7 @@ jobs:
           #FILE_NAME="${REPOSITORY_NAME}-${VERSION}.zip"
           #echo "FILE_NAME=$FILE_NAME" >> $GITHUB_ENV
 
+  pre-release:
     steps:
       # ...
       - name: Checkout source code
@@ -29,5 +27,5 @@ jobs:
         
       - name: "Set filename"
         run: |
-        echo "Set filename"
+          echo "Set filename"
         
