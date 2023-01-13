@@ -9,25 +9,11 @@ on:
 
 # Automatically create a GitHub Release, with release details specified (the relevant commits)
 jobs:
-  get-props:
-    name: "Release"
-    runs-on: "ubuntu-latest"
+  image-name:
+    runs-on: ubuntu-latest
+    outputs:
+      IMAGE_TAG: ${{ github.ref_name }}-${{ steps.short-sha.outputs.sha }}
     steps:
-      - name: "Get props"¡
-        uses: actions/checkout@v1
-        run: |
-          REPOSITORY_NAME=${{ github.event.repository.name }}
-          echo "ℹ︎ REPOSITORY_NAME: $REPOSITORY_NAME"
-          #FILE_NAME="${REPOSITORY_NAME}-${VERSION}.zip"
-          #echo "FILE_NAME=$FILE_NAME" >> $GITHUB_ENV
-
-  pre-release:
-    steps:
-      # ...
-      - name: Checkout source code
-        uses: actions/checkout@v1
-        
-      - name: "Set filename"
-        run: |
-          echo "Set filename"
-        
+      - name: Parse short sha
+        uses: benjlevesque/short-sha@v1.2
+        id: short-sha
