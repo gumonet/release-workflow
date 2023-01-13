@@ -1,0 +1,33 @@
+# Name of the workflow
+name: Pre-Release
+
+# Run on every push to main
+on:
+  push:
+    branches:
+      - "dev"
+
+# Automatically create a GitHub Release, with release details specified (the relevant commits)
+jobs:
+  get-props:
+    name: "Get props"
+
+  pre-release:
+    name: "Pre Release"
+      - name: "Set filename"
+        uses: actions/checkout@v1
+        run: |
+          REPOSITORY_NAME=${{ github.event.repository.name }}
+          echo "ℹ︎ REPOSITORY_NAME: $REPOSITORY_NAME"
+          #FILE_NAME="${REPOSITORY_NAME}-${VERSION}.zip"
+          #echo "FILE_NAME=$FILE_NAME" >> $GITHUB_ENV
+
+    steps:
+      # ...
+      - name: Checkout source code
+        uses: actions/checkout@v1
+        
+      - name: "Set filename"
+        run: |
+        echo "Set filename"
+        
