@@ -10,6 +10,8 @@ on:
 # Automatically create a GitHub Release, with release details specified (the relevant commits)
 jobs:
   get-props:
+    name: "Release"
+    runs-on: "ubuntu-latest"
     steps:
       - name: "Get props"¡
         uses: actions/checkout@v1
