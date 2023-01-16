@@ -16,7 +16,7 @@ jobs:
         id: short-sha
         run: |
           echo "GET FILENAME"
-          FILE_NAME="${REPOSITORY_NAME}.zip"
+          FILE_NAME="repositorii_namonasd.zip"
           echo $FILE_NAME >> $GITHUB_OUTPUT
           echo "$FILE_NAME"
           echo $FILE_NAME
