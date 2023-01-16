@@ -9,18 +9,17 @@ on:
 
 # Automatically create a GitHub Release, with release details specified (the relevant commits)
 jobs:
-  jobs:
-    job1:
-      runs-on: ubuntu-latest
-      # Map a step output to a job output
-      outputs:
-        output1: ${{ steps.step1.outputs.test }}
-        output2: ${{ steps.step2.outputs.test }}
-      steps:
-        - id: step1
-          run: echo "test=hello" >> $GITHUB_OUTPUT
-        - id: step2
-          run: echo "test=world" >> $GITHUB_OUTPUT
+  job1:
+    runs-on: ubuntu-latest
+    # Map a step output to a job output
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
+      output2: ${{ steps.step2.outputs.test }}
+    steps:
+      - id: step1
+        run: echo "test=hello" >> $GITHUB_OUTPUT
+      - id: step2
+        run: echo "test=world" >> $GITHUB_OUTPUT
   job2:
     runs-on: ubuntu-latest
     needs: job1
