@@ -13,12 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       FILENAME: ${{ steps.getprops.outputs.FILENAME}}
+      PARAM2: ${{ steps.getprops.outputs.PARAM2}}
     steps:
       - name: Set filename
         id: getprops
         run: |
           echo "GET FILENAME"
           echo "FILENAME=helloworld" >> $GITHUB_OUTPUT
+          echo "PARAM2=holicrayolii" >> $GITHUB_OUTPUT
 
   release:
     runs-on: ubuntu-latest
@@ -27,4 +29,5 @@ jobs:
       - run: |
           echo "<==== GET FILE NAME"
           echo ${{needs.get-name.outputs.FILENAME}}
+          echo ${{needs.get-name.outputs.PARAM2}}
 
